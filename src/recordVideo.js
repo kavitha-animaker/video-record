@@ -3,8 +3,20 @@ import {
   useRecordWebcam,
   CAMERA_STATUS
 } from "react-record-webcam";
+import styled from "styled-components";
 
+const Button = styled.button`
 
+  display: block;
+  font-size: 1em;
+  margin: 8px;
+  padding: 5px;
+  border: 2px solid black;
+  border-radius: 5px;
+`;
+const Wrapper = styled.div`
+   display: flex;
+`
 const App = () => {
   const recordWebcam = useRecordWebcam();
 
@@ -13,45 +25,36 @@ const App = () => {
       <div >
         <h1>Record Video</h1>
         <div>
-          <button
-            disabled={
-              recordWebcam.status === CAMERA_STATUS.OPEN ||
-              recordWebcam.status === CAMERA_STATUS.RECORDING
-            }
-            onClick={recordWebcam.open}
-          >
-            Open camera
-          </button>
-          <button
+          <Button disabled={
+            recordWebcam.status === CAMERA_STATUS.OPEN ||
+            recordWebcam.status === CAMERA_STATUS.RECORDING
+          }
+            onClick={recordWebcam.open}>Open Camera</Button>
+          <Button
             disabled={
               recordWebcam.status === CAMERA_STATUS.CLOSED ||
               recordWebcam.status === CAMERA_STATUS.RECORDING
             }
             onClick={recordWebcam.close}
-          >
-            Close camera
-          </button>
-          <button
-            disabled={
-              recordWebcam.status === CAMERA_STATUS.CLOSED ||
-              recordWebcam.status === CAMERA_STATUS.RECORDING
-            }
-            onClick={recordWebcam.start}
-          >
-            Start recording
-          </button>
-          <button
+          > Close camera</Button>
+          <Button disabled={
+            recordWebcam.status === CAMERA_STATUS.CLOSED ||
+            recordWebcam.status === CAMERA_STATUS.RECORDING
+          }
+            onClick={recordWebcam.start}>Start recording</Button>
+
+          <Button
             disabled={recordWebcam.status !== CAMERA_STATUS.RECORDING}
             onClick={recordWebcam.stop}
           >
             Stop recording
-          </button>
-          <button
+          </Button>
+          <Button
             disabled={recordWebcam.status !== CAMERA_STATUS.PREVIEW}
             onClick={recordWebcam.download}
           >
             Download
-          </button>
+          </Button>
         </div>
 
         <video
