@@ -25,6 +25,7 @@ const App = () => {
       <div >
         <h1>Record Video</h1>
         <div>
+          <Wrapper>
           <Button disabled={
             recordWebcam.status === CAMERA_STATUS.OPEN ||
             recordWebcam.status === CAMERA_STATUS.RECORDING
@@ -55,6 +56,7 @@ const App = () => {
           >
             Download
           </Button>
+          </Wrapper>
         </div>
 
         <video
@@ -68,6 +70,7 @@ const App = () => {
           }}
           autoPlay
           muted
+          conntrols
         />
         <video
           ref={recordWebcam.previewRef}
@@ -77,6 +80,7 @@ const App = () => {
           }}
           autoPlay
           muted
+          controls
         />
       </div>
     </div>
